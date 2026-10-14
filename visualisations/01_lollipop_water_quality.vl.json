@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Lollipop chart ranking the 20 NSW beaches with the lowest water quality ratings.",
   "data": {
-    "url": "../data/data.csv"
+    "url": "data/data.csv"
   },
   "transform": [
     {"filter": "datum.latest_result_rating != null"},

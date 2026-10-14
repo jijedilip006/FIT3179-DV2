@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Donut chart showing the proportion of NSW beaches by their pollution forecast.",
   "data": {
-    "url": "../data/data.csv"
+    "url": "data/data.csv"
   },
   "transform": [
     {

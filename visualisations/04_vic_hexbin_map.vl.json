@@ -23,7 +23,7 @@
     },
     {
       "data": {
-        "url": "../data/vic_beaches_1.csv",
+        "url": "data/vic_beaches_1.csv",
         "format": {
           "type": "csv",
           "parse": {

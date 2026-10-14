@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Distribution of Victorian beaches across hazard ratings.",
   "data": {
-    "url": "../data/vic_beaches.csv"
+    "url": "data/vic_beaches.csv"
   },
   "width": 500,
   "height": 300,
