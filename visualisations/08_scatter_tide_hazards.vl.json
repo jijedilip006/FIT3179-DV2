@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Interactive scatter plot showing the relationship between Physical Rating and Hazard Rating.",
+  "data": {
+    "url": "../data/vic_beaches.csv"
+  },
+  "width": 550,
+  "height": 350,
+  "transform": [
+    {"filter": "datum.HAZARD_RAT != null && datum.PHYSICAL_R != null"}
+  ],
+  "mark": {
+    "type": "circle",
+    "opacity": 0.5,
+    "size": 150,
+    "stroke": "black",
+    "strokeWidth": 0.5
+  },
+  "encoding": {
+    "x": {
+      "field": "PHYSICAL_R",
+      "type": "quantitative",
+      "title": "Physical Rating (0-10)",
+      "scale": {"domain": [-0.5, 10]}
+    },
+    "y": {
+      "field": "HAZARD_RAT",
+      "type": "quantitative",
+      "title": "Hazard Rating (1-10)",
+      "scale": {"domain": [0, 10]}
+    },
+    "color": {
+      "field": "HAZARD_RAT",
+      "type": "quantitative",
+      "scale": {"scheme": "plasma"},
+      "legend": {"title": "Danger Level"}
+    },
+    "tooltip": [
+      {"field": "BEACH", "type": "nominal", "title": "Beach Name"},
+      {"field": "PHYSICAL_R", "type": "quantitative", "title": "Physical Rating"},
+      {"field": "HAZARD_RAT", "type": "quantitative", "title": "Hazard Rating"}
+    ]
+  },
+  "params": [
+    {
+      "name": "grid",
+      "select": "interval",
+      "bind": "scales"
+    }
+  ]
+}

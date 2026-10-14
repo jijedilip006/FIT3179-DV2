@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap showing the relationship between Beach Hazard Ratings and BBQ Facilities.",
+  "data": {
+    "url": "../data/vic_beaches.csv"
+  },
+  "width": 500,
+  "height": 250,
+  "transform": [
+    {"filter": "datum.HAZARD_RAT != null && datum.BBQ != null && datum.HAZARD_RAT > 0"}
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "HAZARD_RAT",
+      "type": "ordinal",
+      "sort": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+      "title": "Hazard Rating (1 = Safest, 10 = Most Dangerous)",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "BBQ",
+      "type": "nominal",
+      "title": "BBQ Facilities (Y/N or Count)"
+    },
+    "color": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "scale": {"scheme": "oranges"},
+      "legend": {"title": "Number of Beaches"}
+    },
+    "tooltip": [
+      {"field": "HAZARD_RAT", "type": "ordinal", "title": "Hazard Rating"},
+      {"field": "BBQ", "type": "nominal", "title": "BBQ Facilities"},
+      {"aggregate": "count", "type": "quantitative", "title": "Total Beaches"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"}
+  }
+}

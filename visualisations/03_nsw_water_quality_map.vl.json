@@ -1,0 +1,67 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Proportional symbol map of NSW beaches showing water quality ratings.",
+  "width": 600,
+  "height": 700,
+  "projection": {
+    "type": "mercator",
+    "center": [149, -33],
+    "scale": 2500
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d3d3d3",
+        "stroke": "white",
+        "strokeWidth": 1.5
+      }
+    },
+    {
+      "data": {
+        "url": "../data/data.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.7,
+        "stroke": "black",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "latest_result_rating",
+          "type": "quantitative",
+          "scale": {"domain": [1, 4], "range": [20, 250]},
+          "legend": {"title": "Rating (1=Bad, 4=Good)"}
+        },
+        "color": {
+          "field": "latest_result",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Good", "Fair", "Poor", "Bad"],
+            "range": ["#2ca02c", "#ff7f0e", "#d62728", "#8c564b"]
+          },
+          "legend": {"title": "Observation Result"}
+        },
+        "tooltip": [
+          {"field": "site_name", "type": "nominal", "title": "Beach Name"},
+          {"field": "latest_result", "type": "nominal", "title": "Result"},
+          {"field": "latest_result_rating", "type": "quantitative", "title": "Rating"},
+          {"field": "pollution_forecast", "type": "nominal", "title": "Forecast"}
+        ]
+      }
+    }
+  ]
+}

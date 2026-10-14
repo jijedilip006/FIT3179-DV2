@@ -1,0 +1,85 @@
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Main content wrapper */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 1.1em;
+}
+
+/* Sections */
+.dashboard-section {
+    margin-bottom: 50px;
+}
+
+h2 {
+    color: #2980b9;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+.section-desc {
+    margin-bottom: 30px;
+    font-style: italic;
+    color: #555;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #e0e0e0;
+    margin: 40px 0;
+}
+
+/* Layout for visualisations */
+.vis-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.vis-container {
+    flex: 1;
+    min-width: 450px; /* Forces wrap on smaller screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.map-container {
+    flex: 100%; /* Maps take up the full row width */
+}
+
+h3 {
+    font-size: 1.1em;
+    color: #34495e;
+    text-align: center;
+    margin-bottom: 15px;
+}

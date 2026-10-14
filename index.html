@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Beaches: Water Quality & Safety Analysis</title>
+
+    <!-- Import Vega & Vega-Lite scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
+
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Additional styling for insight paragraphs -->
+    <style>
+        .insight-text {
+            max-width: 800px;
+            margin: 15px auto 30px auto;
+            text-align: center;
+            line-height: 1.6;
+            color: #4a5568;
+            font-size: 0.95em;
+        }
+        .container-insight {
+            max-width: 400px;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <h1>Australian Beaches: Water Quality & Safety Analysis</h1>
+            <p class="subtitle">A visual exploration of NSW pollution metrics and Victorian beach hazards.</p>
+        </header>
+
+        <section class="dashboard-section">
+            <h2>Part 1: New South Wales Water Quality</h2>
+            <p class="section-desc">An overview of water quality ratings and pollution forecasts across NSW monitoring sites.</p>
+
+            <div class="vis-row">
+                <div class="vis-container map-container">
+                    <h3>Water Quality Map</h3>
+                    <div id="vis3"></div>
+                    <p class="insight-text">
+                        This proportional symbol map reveals the geographic spread of water quality monitoring sites across the New South Wales coast. The concentration of monitoring stations is heavily biased toward populous coastal hubs, providing critical safety data where beachgoer volume is highest.
+                    </p>
+                </div>
+            </div>
+
+            <div class="vis-row">
+                <div class="vis-container">
+                    <h3>Water Quality Ratings</h3>
+                    <div id="vis1"></div>
+                    <p class="container-insight">
+                        The lollipop chart demonstrates the distribution of overall water quality ratings. It highlights the frequency of highly-rated beaches against those that struggle to meet safe recreational swimming standards.
+                    </p>
+                </div>
+                <div class="vis-container">
+                    <h3>Pollution Forecasts</h3>
+                    <div id="vis2"></div>
+                    <p class="container-insight">
+                        Complementing the historical ratings, this donut chart breaks down short-term pollution forecasts, allowing us to see the exact proportion of coastal sites currently facing potential stormwater or bacterial contamination.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="dashboard-section">
+            <h2>Part 2: Victorian Beach Safety & Facilities</h2>
+            <p class="section-desc">Analyzing the relationship between physical hazards, natural features, and beach amenities across Victoria.</p>
+
+            <div class="vis-row">
+                <div class="vis-container map-container">
+                    <h3>Victorian Beach Density Map</h3>
+                    <div id="vis4"></div>
+                    <p class="insight-text">
+                        Using spatial binning, this density map illustrates the heavy concentration of beaches along the Victorian coastline. The darkest blue squares immediately draw attention to the densely populated clusters around Port Phillip Bay, contrasting sharply with the sparser, remote regional coastlines.
+                    </p>
+                </div>
+            </div>
+
+            <div class="vis-row">
+                <div class="vis-container">
+                    <h3>Distribution of Hazard Ratings</h3>
+                    <div id="vis7"></div>
+                    <p class="container-insight">
+                        The hazard ratings for Victorian beaches form a distinct bell curve peaking around levels 6 and 7. This indicates that a significant majority of the state's beaches pose a moderate to high natural risk to swimmers, rather than being perfectly calm environments.
+                    </p>
+                </div>
+                <div class="vis-container">
+                    <h3>Hazards vs. BBQ Facilities</h3>
+                    <div id="vis5"></div>
+                    <p class="container-insight">
+                        This heatmap uncovers a fascinating correlation between natural danger and human infrastructure. Beaches equipped with family-friendly amenities, such as BBQs, are overwhelmingly clustered in the lower, safer hazard categories (ratings 1-4).
+                    </p>
+                </div>
+            </div>
+
+            <div class="vis-row">
+                <div class="vis-container">
+                    <h3>Shark Presence & Hazard Ratings</h3>
+                    <div id="vis6"></div>
+                    <p class="container-insight">
+                        Analyzing specific biological dangers, the box plot shows a clear upward shift in the median hazard rating for beaches where shark risks are documented. The presence of apex predators reliably correlates with a higher overall danger classification.
+                    </p>
+                </div>
+                <div class="vis-container">
+                    <h3>Physical Features vs. Hazard Ratings</h3>
+                    <div id="vis8"></div>
+                    <p class="container-insight">
+                        This interactive scatter plot confirms a strict, positive correlation between a beach's inherent physical topography rating and its final hazard score. It suggests that natural structural elements, such as reef breaks and outfalls, are the primary dictators of swimming safety.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        vegaEmbed('#vis1', 'visualisations/01_lollipop_water_quality.vl.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#vis2', 'visualisations/02_donut_pollution.vl.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#vis3', 'visualisations/03_nsw_water_quality_map.vl.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#vis4', 'visualisations/04_vic_hexbin_map.vl.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#vis5', 'visualisations/05_heatmap_hazards_amenities.vl.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#vis6', 'visualisations/06_boxplot_sharks_hazards.vl.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#vis7', 'visualisations/07_bar_top_hazardous.vl.json', {"actions": false}).catch(console.error);
+        vegaEmbed('#vis8', 'visualisations/08_scatter_tide_hazards.vl.json', {"actions": false}).catch(console.error);
+    </script>
+</body>
+</html>
