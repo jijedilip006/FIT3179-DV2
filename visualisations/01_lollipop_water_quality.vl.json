@@ -15,7 +15,7 @@
     },
     {"filter": "datum.row_number <= 20"}
   ],
-  "width": "container",
+  "width": 450,
   "height": 350,
   "encoding": {
     "x": {
