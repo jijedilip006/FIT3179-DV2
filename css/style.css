@@ -1,59 +1,69 @@
-/* Base styles */
+/* Base styles - Coastal Theme */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    /* Soft gradient background: sky blue fading to a warm sandy white */
+    background: linear-gradient(135deg, #dbe9f4 0%, #f4f1ea 100%);
+    background-attachment: fixed; /* Keeps the gradient smooth when scrolling */
+    color: #2c3e50;
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 /* Main content wrapper */
 .page-container {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: white;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.96);
+    padding: 50px;
+    border-radius: 16px; /* Smoother, modern rounded corners */
+    box-shadow: 0 10px 40px rgba(15, 76, 117, 0.1); /* Soft ocean-blue shadow */
 }
 
+/* Header Styling */
 header {
     text-align: center;
     margin-bottom: 40px;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #3282b8; /* Cerulean accent line */
 }
 
 h1 {
-    margin-bottom: 5px;
-    color: #2c3e50;
+    margin-bottom: 10px;
+    color: #0f4c75; /* Deep Ocean Blue */
+    font-size: 2.4em;
+    letter-spacing: 0.5px;
 }
 
 .subtitle {
-    color: #7f8c8d;
-    font-size: 1.1em;
+    color: #5c7a8f;
+    font-size: 1.15em;
+    font-weight: 500;
 }
 
 /* Sections */
 .dashboard-section {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 h2 {
-    color: #2980b9;
-    border-bottom: 2px solid #ecf0f1;
+    color: #3282b8;
+    border-bottom: 2px dashed #bbe1fa;
     padding-bottom: 10px;
+    margin-bottom: 5px;
+    font-size: 1.8em;
 }
 
 .section-desc {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     font-style: italic;
-    color: #555;
+    color: #6c8a9e;
 }
 
 hr {
     border: 0;
-    height: 1px;
-    background: #e0e0e0;
-    margin: 40px 0;
+    height: 2px;
+    background: #bbe1fa;
+    margin: 50px 0;
 }
 
 /* Layout for visualisations */
@@ -65,21 +75,64 @@ hr {
     justify-content: center;
 }
 
+/* Individual Chart Cards */
 .vis-container {
     flex: 1;
-    min-width: 450px; /* Forces wrap on smaller screens */
+    min-width: 450px; 
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #ffffff;
+    padding: 25px 20px;
+    border-radius: 12px;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Interactive hover effect for the chart cards */
+.vis-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(15, 76, 117, 0.08);
 }
 
 .map-container {
-    flex: 100%; /* Maps take up the full row width */
+    flex: 100%; 
 }
 
+/* Chart Titles */
 h3 {
-    font-size: 1.1em;
-    color: #34495e;
+    font-size: 1.15em;
+    color: #1b4965;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    background-color: #f0f7fa; /* Light blue pill background */
+    padding: 8px 25px;
+    border-radius: 20px;
+}
+
+/* Insight Paragraph Styling */
+.insight-text {
+    max-width: 800px;
+    margin: 20px auto 10px auto;
+    padding: 15px 25px;
+    background-color: #fafbfc;
+    border-left: 4px solid #3282b8;
+    border-radius: 0 8px 8px 0;
+    color: #4a5568;
+    line-height: 1.6;
+    font-size: 0.95em;
+}
+
+.container-insight {
+    max-width: 400px;
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #fafbfc;
+    border-left: 4px solid #3282b8;
+    border-radius: 0 8px 8px 0;
+    color: #4a5568;
+    line-height: 1.5;
+    font-size: 0.9em;
+    text-align: left; /* Left aligned is easier to read inside the cards */
 }
