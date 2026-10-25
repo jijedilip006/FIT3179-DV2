@@ -26,7 +26,7 @@
     },
     {
       "data": {
-        "url": "../data/BEACH_FACILITIES_SAFETY.csv",
+        "url": "data/BEACH_FACILITIES_SAFETY.csv",
         "format": {
           "type": "csv",
           "parse": {
