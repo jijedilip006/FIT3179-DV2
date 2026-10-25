@@ -3,9 +3,20 @@
   "description": "Interactive map of Victorian beach amenities.",
   "width": 800,
   "height": 450,
-  "projection": {"type": "mercator"},
+  "projection": {
+    "type": "mercator",
+    "center": [145, -37.5],
+    "scale": 4500
+  },
   "data": {
-    "url": "data/BEACH_FACILITIES_SAFETY_2.csv"
+    "url": "data/BEACH_FACILITIES_SAFETY.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "longitude": "number",
+        "latitude": "number"
+      }
+    }
   },
   "mark": {
     "type": "circle",
