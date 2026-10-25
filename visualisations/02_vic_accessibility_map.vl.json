@@ -9,7 +9,7 @@
     "scale": 4500
   },
   "data": {
-    "url": "data/BEACH_FACILITIES_SAFETY.csv?v=2",
+    "url": "data/BEACH_FACILITIES_SAFETY.csv",
     "format": {
       "type": "csv",
       "parse": {
@@ -32,8 +32,8 @@
       "field": "BBQ",
       "type": "nominal",
       "scale": {
-        "domain": ["F", "T", "False", "True"],
-        "range": ["#cbd5e1", "#10b981", "#cbd5e1", "#10b981"]
+        "domain": ["FALSE", "TRUE"],
+        "range": ["#cbd5e1", "#10b981"]
       },
       "legend": {"title": "BBQ Available"}
     },
