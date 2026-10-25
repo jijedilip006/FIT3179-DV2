@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "100% Stacked Bar Chart of Water Quality Forecasts.",
+  "width": 400,
+  "height": 300,
+  "data": {
+    "url": "../data/data.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "pollution_forecast",
+      "type": "nominal",
+      "title": "Pollution Forecast"
+    },
+    "y": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "stack": "normalize",
+      "axis": {"format": "%", "title": "Percentage of Beaches"}
+    },
+    "color": {
+      "field": "latest_result",
+      "type": "nominal",
+      "title": "Actual Observation",
+      "scale": {
+        "domain": ["Good", "Fair", "Poor", "Bad"],
+        "range": ["#10b981", "#facc15", "#f97316", "#ef4444"]
+      }
+    },
+    "tooltip": [
+      {"field": "pollution_forecast", "type": "nominal", "title": "Forecast"},
+      {"field": "latest_result", "type": "nominal", "title": "Actual Result"},
+      {"aggregate": "count", "type": "quantitative", "title": "Count"}
+    ]
+  }
+}

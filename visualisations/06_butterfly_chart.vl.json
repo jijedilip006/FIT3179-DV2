@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Butterfly chart comparing BBQs vs Playgrounds across Hazard Ratings.",
+  "data": {
+    "url": "../data/BEACH_FACILITIES_SAFETY.csv"
+  },
+  "transform": [
+    {"calculate": "datum.BBQ == 'TRUE' ? 1 : 0", "as": "bbq_count"},
+    {"calculate": "datum.PLAYGROUND == 'TRUE' ? 1 : 0", "as": "play_count"}
+  ],
+  "spacing": 10,
+  "hconcat": [
+    {
+      "width": 250,
+      "mark": "bar",
+      "encoding": {
+        "y": {"field": "HAZARD_RAT", "type": "ordinal", "axis": null, "sort": "descending"},
+        "x": {
+          "aggregate": "sum",
+          "field": "bbq_count",
+          "type": "quantitative",
+          "title": "Total BBQs",
+          "sort": "descending"
+        },
+        "color": {"value": "#10b981"},
+        "tooltip": [{"aggregate": "sum", "field": "bbq_count", "title": "BBQs"}]
+      }
+    },
+    {
+      "width": 20,
+      "view": {"stroke": null},
+      "mark": {"type": "text", "align": "center"},
+      "encoding": {
+        "y": {"field": "HAZARD_RAT", "type": "ordinal", "axis": null, "sort": "descending"},
+        "text": {"field": "HAZARD_RAT", "type": "ordinal"}
+      }
+    },
+    {
+      "width": 250,
+      "mark": "bar",
+      "encoding": {
+        "y": {
+          "field": "HAZARD_RAT",
+          "type": "ordinal",
+          "axis": null,
+          "sort": "descending"
+        },
+        "x": {
+          "aggregate": "sum",
+          "field": "play_count",
+          "type": "quantitative",
+          "title": "Total Playgrounds"
+        },
+        "color": {"value": "#8b5cf6"},
+        "tooltip": [{"aggregate": "sum", "field": "play_count", "title": "Playgrounds"}]
+      }
+    }
+  ]
+}

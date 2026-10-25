@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Radial Stacked Bar Chart of Amenities by Hazard Rating.",
+  "width": 500,
+  "height": 500,
+  "data": {
+    "url": "../data/BEACH_FACILITIES_SAFETY.csv"
+  },
+  "mark": {
+    "type": "arc",
+    "innerRadius": 50,
+    "stroke": "#ffffff"
+  },
+  "encoding": {
+    "theta": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "stack": true
+    },
+    "radius": {
+      "field": "HAZARD_RAT",
+      "type": "ordinal",
+      "scale": {"type": "point", "paddingInner": 0.1, "align": 0.5},
+      "title": "Hazard Rating (Center Outward)"
+    },
+    "color": {
+      "field": "KIOSK",
+      "type": "nominal",
+      "scale": {
+        "domain": ["FALSE", "TRUE"],
+        "range": ["#cbd5e1", "#3b82f6"]
+      },
+      "legend": {"title": "Has Kiosk?"}
+    },
+    "tooltip": [
+      {"field": "HAZARD_RAT", "type": "ordinal", "title": "Hazard Rating"},
+      {"field": "KIOSK", "type": "nominal", "title": "Kiosk Present"},
+      {"aggregate": "count", "type": "quantitative", "title": "Number of Beaches"}
+    ]
+  }
+}

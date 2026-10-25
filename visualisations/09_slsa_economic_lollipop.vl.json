@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Lollipop chart of SLSA economic value (2024).",
+  "width": 400,
+  "height": 300,
+  "data": {
+    "url": "../data/slsa_data.csv"
+  },
+  "transform": [
+    {"filter": "datum.year == 2024"}
+  ],
+  "encoding": {
+    "x": {
+      "field": "state",
+      "type": "nominal",
+      "sort": "-x",
+      "axis": {"title": "State", "labelAngle": 0}
+    },
+    "y": {
+      "field": "economic_value_billions",
+      "type": "quantitative",
+      "axis": {"title": "Value to Community ($ Billions)"}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "size": 3, "color": "#cbd5e1"}
+    },
+    {
+      "mark": {"type": "circle", "size": 250, "color": "#ef4444", "opacity": 1},
+      "encoding": {
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "economic_value_billions", "type": "quantitative", "title": "Economic Value ($B)"},
+          {"field": "volunteers", "type": "quantitative", "title": "Total Volunteers"}
+        ]
+      }
+    }
+  ]
+}

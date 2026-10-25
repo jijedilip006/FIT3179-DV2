@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Jitter plot of Hazard Ratings vs Physical Ratings.",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "../data/BEACH_FACILITIES_SAFETY.csv"
+  },
+  "transform": [
+    {"calculate": "random()", "as": "jitter"}
+  ],
+  "mark": {"type": "circle", "size": 40, "opacity": 0.5},
+  "encoding": {
+    "x": {
+      "field": "PHYSICAL_R",
+      "type": "ordinal",
+      "title": "Physical Rating (Ruggedness)"
+    },
+    "y": {
+      "field": "HAZARD_RAT",
+      "type": "quantitative",
+      "title": "Hazard Rating",
+      "scale": {"domain": [1, 10]}
+    },
+    "xOffset": {
+      "field": "jitter",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "HAZARD_RAT",
+      "type": "quantitative",
+      "legend": null,
+      "scale": {"scheme": "turbo"}
+    },
+    "tooltip": [
+      {"field": "BEACH", "type": "nominal", "title": "Beach"},
+      {"field": "PHYSICAL_R", "type": "ordinal", "title": "Physical Rating"},
+      {"field": "HAZARD_RAT", "type": "quantitative", "title": "Hazard Rating"}
+    ]
+  }
+}

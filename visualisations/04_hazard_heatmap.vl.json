@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Interactive Heatmap of Beach Hazards vs Physical Ratings.",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "../data/BEACH_FACILITIES_SAFETY.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "hover",
+      "select": {
+        "type": "point",
+        "on": "mouseover",
+        "clear": "mouseout"
+      }
+    }
+  ],
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "PHYSICAL_R",
+      "type": "ordinal",
+      "title": "Physical Rating (Higher = More Rugged)",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "HAZARD_RAT",
+      "type": "ordinal",
+      "title": "Hazard Rating (Scale 1-10)",
+      "sort": "descending"
+    },
+    "color": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "scale": {"scheme": "oranges"},
+      "title": "Number of Beaches"
+    },
+    "opacity": {
+      "condition": {"param": "hover", "value": 1},
+      "value": 0.6
+    },
+    "tooltip": [
+      {"field": "PHYSICAL_R", "type": "ordinal", "title": "Physical Rating"},
+      {"field": "HAZARD_RAT", "type": "ordinal", "title": "Hazard Rating"},
+      {"aggregate": "count", "type": "quantitative", "title": "Total Beaches"}
+    ]
+  },
+  "config": {
+    "axis": {"grid": true, "tickBand": "extent"}
+  }
+}

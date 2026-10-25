@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Box plot showing the distribution of hazard ratings based on shark presence.",
+  "data": {
+    "url": "data/vic_beaches.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "transform": [
+    {"filter": "datum.HAZARD_RAT != null && datum.SHARKS != null"}
+  ],
+  "mark": {
+    "type": "boxplot",
+    "extent": "min-max",
+    "median": {"color": "black"}
+  },
+  "encoding": {
+    "x": {
+      "field": "SHARKS",
+      "type": "nominal",
+      "title": "Shark Hazard Present"
+    },
+    "y": {
+      "field": "HAZARD_RAT",
+      "type": "quantitative",
+      "title": "Hazard Rating (1-10)"
+    },
+    "color": {
+      "field": "SHARKS",
+      "type": "nominal",
+      "legend": null,
+      "scale": {"range": ["#1f77b4", "#d62728"]}
+    }
+  }
+}

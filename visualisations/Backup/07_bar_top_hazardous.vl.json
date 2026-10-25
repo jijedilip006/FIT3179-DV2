@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Distribution of Victorian beaches across hazard ratings.",
+  "data": {
+    "url": "data/vic_beaches.csv"
+  },
+  "width": 500,
+  "height": 300,
+  "transform": [
+    {"filter": "datum.HAZARD_RAT != null && datum.HAZARD_RAT > 0"}
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadiusEnd": 4
+  },
+  "encoding": {
+    "x": {
+      "field": "HAZARD_RAT",
+      "type": "ordinal",
+      "sort": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+      "title": "Hazard Rating (1 = Safest, 9 = Most Dangerous)",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "aggregate": "count",
+      "type": "quantitative",
+      "title": "Number of Beaches"
+    },
+    "color": {
+      "field": "HAZARD_RAT",
+      "type": "quantitative",
+      "scale": {"scheme": "reds"},
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "HAZARD_RAT", "type": "ordinal", "title": "Hazard Rating"},
+      {"aggregate": "count", "type": "quantitative", "title": "Beach Count"}
+    ]
+  }
+}

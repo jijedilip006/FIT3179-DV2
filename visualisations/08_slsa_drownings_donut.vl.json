@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Donut chart of coastal drownings by state (2024).",
+  "width": 300,
+  "height": 300,
+  "data": {
+    "url": "../data/slsa_data.csv"
+  },
+  "transform": [
+    {"filter": "datum.year == 2024"}
+  ],
+  "mark": {"type": "arc", "innerRadius": 70, "stroke": "white"},
+  "encoding": {
+    "theta": {"field": "drownings", "type": "quantitative"},
+    "color": {
+      "field": "state", 
+      "type": "nominal", 
+      "title": "State/Territory",
+      "scale": {"scheme": "category10"}
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "Region"},
+      {"field": "drownings", "type": "quantitative", "title": "Fatalities (2024)"}
+    ]
+  }
+}
