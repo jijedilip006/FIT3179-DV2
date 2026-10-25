@@ -4,7 +4,7 @@
   "width": 400,
   "height": 300,
   "data": {
-    "url": "../data/data.csv"
+    "url": "data/data.csv"
   },
   "mark": "bar",
   "encoding": {

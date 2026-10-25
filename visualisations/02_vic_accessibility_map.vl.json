@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Interactive layered map of Victorian beach amenities.",
-  "width": 800,
+  "width": 600,
   "height": 450,
   "projection": {
     "type": "mercator",

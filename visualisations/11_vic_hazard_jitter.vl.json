@@ -4,7 +4,7 @@
   "width": 500,
   "height": 300,
   "data": {
-    "url": "../data/BEACH_FACILITIES_SAFETY.csv"
+    "url": "data/BEACH_FACILITIES_SAFETY.csv"
   },
   "transform": [
     {"calculate": "random()", "as": "jitter"}

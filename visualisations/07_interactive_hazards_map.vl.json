@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Interactive map of coastal hazards with slider filter.",
-  "width": 800,
+  "width": 600,
   "height": 450,
   "projection": {
     "type": "mercator",
@@ -36,7 +36,7 @@
     },
     {
       "data": {
-        "url": "../data/BEACH_FACILITIES_SAFETY.csv",
+        "url": "data/BEACH_FACILITIES_SAFETY.csv",
         "format": {
           "type": "csv",
           "parse": {
