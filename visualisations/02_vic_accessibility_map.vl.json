@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Interactive map of Victorian beach amenities.",
+  "width": 800,
+  "height": 450,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "data/BEACH_FACILITIES_SAFETY_2.csv"
+  },
+  "mark": {
+    "type": "circle",
+    "size": 60,
+    "opacity": 0.9,
+    "stroke": "white",
+    "strokeWidth": 0.5
+  },
+  "encoding": {
+    "longitude": {"field": "longitude", "type": "quantitative"},
+    "latitude": {"field": "latitude", "type": "quantitative"},
+    "color": {
+      "field": "BBQ",
+      "type": "nominal",
+      "scale": {
+        "domain": ["F", "T", "False", "True"],
+        "range": ["#cbd5e1", "#10b981", "#cbd5e1", "#10b981"]
+      },
+      "legend": {"title": "BBQ Available"}
+    },
+    "tooltip": [
+      {"field": "BEACH", "type": "nominal", "title": "Beach Name"},
+      {"field": "BBQ", "type": "nominal", "title": "BBQ"},
+      {"field": "PICNIC", "type": "nominal", "title": "Picnic Area"},
+      {"field": "PLAYGROUND", "type": "nominal", "title": "Playground"},
+      {"field": "KIOSK", "type": "nominal", "title": "Kiosk"}
+    ]
+  }
+}
