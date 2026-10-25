@@ -1,6 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Butterfly chart comparing BBQs vs Playgrounds across Hazard Ratings.",
+  "title": {
+    "text": "Public Amenities Across Hazard Levels",
+    "subtitle": [
+      "Comparison of BBQ and Playground availability by danger rating.",
+      "Source: Victorian Beach Facilities & Safety"
+    ],
+    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+  },
   "data": {
     "url": "data/BEACH_FACILITIES_SAFETY.csv"
   },

@@ -1,6 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Bar chart of coastal tourism by visitor nights.",
+  "title": {
+    "text": "Coastal Tourism Demand by Region",
+    "subtitle": [
+      "Total visitor nights across major Australian coastal destinations.",
+      "Source: Tourism Research Australia (TRA)"
+    ],
+    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+  },
   "width": 600,
   "height": 380,
   "data": {
@@ -35,6 +43,7 @@
         "grid": false
       }
     },
+    
     "x": {
       "field": "nights",
       "type": "quantitative",

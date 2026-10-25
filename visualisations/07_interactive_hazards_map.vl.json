@@ -1,6 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Interactive map of coastal hazards with slider filter.",
+  "title": {
+    "text": "Interactive: Victorian Beach Hazard Ratings",
+    "subtitle": [
+      "Use the slider to filter beaches by their assigned danger rating (1-10).",
+      "Source: Victorian Beach Facilities & Safety"
+    ],
+    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+  },
   "width": 600,
   "height": 450,
   "projection": {

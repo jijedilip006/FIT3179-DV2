@@ -1,6 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Radial Stacked Bar Chart of Amenities by Hazard Rating.",
+  "title": {
+    "text": "Commercial Infrastructure Retreat",
+    "subtitle": [
+      "Presence of kiosks compared to beach hazard ratings.",
+      "Source: Victorian Beach Facilities & Safety"
+    ],
+    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+  },
   "width": 500,
   "height": 500,
   "data": {

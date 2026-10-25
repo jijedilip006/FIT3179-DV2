@@ -1,6 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Donut chart of coastal drownings by state (2024).",
+  "title": {
+    "text": "National Coastal Fatalities (2024)",
+    "subtitle": [
+      "Proportional distribution of coastal drownings by state and territory.",
+      "Source: SLSA National Coastal Safety Report"
+    ],
+    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+  },
   "width": 300,
   "height": 300,
   "data": {
@@ -9,18 +17,36 @@
   "transform": [
     {"filter": "datum.year == 2024"}
   ],
-  "mark": {"type": "arc", "innerRadius": 70, "stroke": "white"},
-  "encoding": {
-    "theta": {"field": "drownings", "type": "quantitative"},
-    "color": {
-      "field": "state", 
-      "type": "nominal", 
-      "title": "State/Territory",
-      "scale": {"scheme": "category10"}
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 75, "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "theta": {"field": "drownings", "type": "quantitative"},
+        "color": {
+          "field": "state", 
+          "type": "nominal", 
+          "title": "State/Territory",
+          "scale": {"scheme": "category10"}
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "Region"},
+          {"field": "drownings", "type": "quantitative", "title": "Fatalities (2024)"}
+        ]
+      }
     },
-    "tooltip": [
-      {"field": "state", "type": "nominal", "title": "Region"},
-      {"field": "drownings", "type": "quantitative", "title": "Fatalities (2024)"}
-    ]
-  }
+    {
+      "mark": {"type": "text", "fontSize": 36, "fontWeight": "bold", "color": "#0f172a", "dy": -5},
+      "data": {"values": [{}]},
+      "encoding": {
+        "text": {"value": "154"}
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": 300, "color": "#64748b", "dy": 20},
+      "data": {"values": [{}]},
+      "encoding": {
+        "text": {"value": "Total Fatalities"}
+      }
+    }
+  ]
 }

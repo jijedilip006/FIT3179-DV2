@@ -1,6 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Interactive layered map of Victorian beach amenities.",
+  "title": {
+    "text": "Victorian Coastal Amenities Distribution",
+    "subtitle": [
+      "Geospatial mapping of BBQs, kiosks, and playgrounds along the coast.",
+      "Source: Victorian Beach Facilities & Safety"
+    ],
+    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+  },
   "width": 600,
   "height": 450,
   "projection": {
