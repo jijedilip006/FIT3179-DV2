@@ -3,67 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Australian Beaches</title>
+    <title>Australia's Coastal Appeal</title>
     
-    <!-- Vega & Vega-Lite -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <!-- Advanced Typography: Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- CSS Link -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <div class="page-container">
-        <header>
-            <h1>Australia's Coastal Appeal</h1>
-            <p class="subtitle">Exploring Tourism, Accessibility, and Pristine Environments</p>
+        <!-- HEADER SECTION -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>Australia's Coastal Appeal</h1>
+                <p class="subtitle">An Analysis of Facilities, Safety, and Economic Value</p>
+                
+                <div class="author-info">
+                    <span class="author-name">By Jijendran</span>
+                    <span class="student-id">Student ID: 35447001</span>
+                </div>
+            </div>
         </header>
 
-        <main>
-            <!-- SECTION 1: TOURISM -->
-            <section class="dashboard-section">
-                <h2>Section 1: The Ultimate Tourist Magnet</h2>
-                <p class="section-desc">
-                    Australia’s coastline is undoubtedly one of its greatest natural attractions. 
-                    Data from Tourism Research Australia reveals that coastal regions consistently dominate 
-                    domestic tourism, drawing millions of visitors seeking pristine beaches and well-equipped 
-                    coastal infrastructure.
-                </p>
-                
-                <div class="vis-row">
-                    <div class="vis-container">
-                        <div id="vis1"></div>
-                    </div>
-                </div>
-            </section>
+        <!-- The rest of your grid and charts will go here -->
 
-            <!-- SECTION 2: ACCESSIBILITY -->
-            <section class="dashboard-section">
-                <h2>Section 2: Family-Friendly Coastal Infrastructure</h2>
-                <p class="section-desc">
-                    A premier tourist destination requires excellent infrastructure. 
-                    This map of Victoria highlights beaches equipped with crucial 
-                    family amenities like BBQs, picnic areas, and kiosks, proving the coastline 
-                    is highly accessible and welcoming for day-trippers.
-                </p>
-                
-                <div class="vis-row">
-                    <div class="vis-container">
-                        <div id="vis2"></div>
-                    </div>
-                </div>
-            </section>
-        </main>
     </div>
-    
-    <!-- JavaScript to embed charts -->
-    <script>
-        // Section 1: Tourism Bar Chart
-        vegaEmbed('#vis1', 'visualisations/01_tourism_bar.vl.json?v=4', {"actions": false}).catch(console.error);
 
-        // Section 2: Victoria Accessibility Map
-        vegaEmbed('#vis2', 'visualisations/02_vic_accessibility_map.vl.json?v=1', {"actions": false}).catch(console.error);
-    </script>
 </body>
 </html>

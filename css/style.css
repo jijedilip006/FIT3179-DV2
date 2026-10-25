@@ -1,139 +1,68 @@
-/* Base styles - Coastal Theme */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* Soft gradient background: sky blue fading to a warm sandy white */
-    background: linear-gradient(135deg, #dbe9f4 0%, #f4f1ea 100%);
-    background-attachment: fixed; /* Keeps the gradient smooth when scrolling */
-    color: #2c3e50;
-    margin: 0;
-    padding: 40px 20px;
+/* --- Global Theme Colors --- */
+:root {
+    --ocean-dark: #0f172a;
+    --ocean-blue: #0284c7;
+    --sand-light: #fdfbf7;
+    --text-main: #334155;
 }
 
-/* Main content wrapper */
+body {
+    background-color: var(--sand-light);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+}
+
+/* Master container to keep the dashboard centered and constrained */
 .page-container {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.96);
-    padding: 50px;
-    border-radius: 16px; /* Smoother, modern rounded corners */
-    box-shadow: 0 10px 40px rgba(15, 76, 117, 0.1); /* Soft ocean-blue shadow */
+    padding: 20px;
 }
 
-/* Header Styling */
-header {
+/* --- Header Styling --- */
+.dashboard-header {
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(15, 23, 42, 0.05) 100%);
+    border-top: 5px solid var(--ocean-blue);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 50px 20px;
     text-align: center;
-    margin-bottom: 40px;
-    padding-bottom: 25px;
-    border-bottom: 3px solid #3282b8; /* Cerulean accent line */
+    margin-bottom: 50px;
+    border-radius: 8px;
 }
 
-h1 {
-    margin-bottom: 10px;
-    color: #0f4c75; /* Deep Ocean Blue */
-    font-size: 2.4em;
-    letter-spacing: 0.5px;
+.dashboard-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--ocean-dark);
+    margin: 0 0 10px 0;
+    letter-spacing: -0.5px;
 }
 
 .subtitle {
-    color: #5c7a8f;
-    font-size: 1.15em;
-    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--ocean-blue);
+    font-weight: 300;
+    margin: 0 0 25px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-/* Sections */
-.dashboard-section {
-    margin-bottom: 60px;
-}
-
-h2 {
-    color: #3282b8;
-    border-bottom: 2px dashed #bbe1fa;
-    padding-bottom: 10px;
-    margin-bottom: 5px;
-    font-size: 1.8em;
-}
-
-.section-desc {
-    margin-bottom: 35px;
-    font-style: italic;
-    color: #6c8a9e;
-}
-
-hr {
-    border: 0;
-    height: 2px;
-    background: #bbe1fa;
-    margin: 50px 0;
-}
-
-/* Layout for visualisations */
-.vis-row {
+.author-info {
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-bottom: 40px;
     justify-content: center;
+    gap: 20px;
+    font-size: 0.95rem;
+    color: var(--ocean-dark);
+    font-weight: 600;
 }
 
-/* Individual Chart Cards */
-.vis-container {
-    flex: 1;
-    min-width: 450px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #ffffff;
-    padding: 25px 20px;
-    border-radius: 12px;
-    border: 1px solid #edf2f7;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* Pill-shaped badges for your name and ID */
+.author-info span {
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
 }
-
-/* Interactive hover effect for the chart cards */
-.vis-container:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(15, 76, 117, 0.08);
-}
-
-.map-container {
-    flex: 100%; 
-}
-
-/* Chart Titles */
-h3 {
-    font-size: 1.15em;
-    color: #1b4965;
-    text-align: center;
-    margin-bottom: 20px;
-    background-color: #f0f7fa; /* Light blue pill background */
-    padding: 8px 25px;
-    border-radius: 20px;
-}
-
-/* Insight Paragraph Styling */
-.insight-text {
-    max-width: 800px;
-    margin: 20px auto 10px auto;
-    padding: 15px 25px;
-    background-color: #fafbfc;
-    border-left: 4px solid #3282b8;
-    border-radius: 0 8px 8px 0;
-    color: #4a5568;
-    line-height: 1.6;
-    font-size: 0.95em;
-}
-
-.container-insight {
-    max-width: 400px;
-    margin-top: 25px;
-    padding: 15px;
-    background-color: #fafbfc;
-    border-left: 4px solid #3282b8;
-    border-radius: 0 8px 8px 0;
-    color: #4a5568;
-    line-height: 1.5;
-    font-size: 0.9em;
-    text-align: left; /* Left aligned is easier to read inside the cards */
-}
-
