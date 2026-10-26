@@ -1,52 +1,54 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Donut chart of coastal drownings by state (2024).",
+  "description": "Nightingale Rose chart of coastal drownings.",
   "title": {
     "text": "National Coastal Fatalities (2024)",
     "subtitle": [
-      "Proportional distribution of coastal drownings by state and territory.",
+      "Nightingale Rose chart of fatalities by state.",
       "Source: SLSA National Coastal Safety Report"
     ],
-    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+    "anchor": "start",
+    "subtitleFontStyle": "italic",
+    "subtitleColor": "#64748b",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "offset": 15
   },
-  "width": 300,
+  "width": 350,
   "height": 300,
   "data": {
     "url": "data/slsa_data.csv"
   },
   "transform": [
-    {"filter": "datum.year == 2024"}
-  ],
-  "layer": [
+    {"filter": "datum.year == 2024"},
     {
-      "mark": {"type": "arc", "innerRadius": 75, "stroke": "white", "strokeWidth": 2},
-      "encoding": {
-        "theta": {"field": "drownings", "type": "quantitative"},
-        "color": {
-          "field": "state", 
-          "type": "nominal", 
-          "title": "State/Territory",
-          "scale": {"scheme": "category10"}
-        },
-        "tooltip": [
-          {"field": "state", "type": "nominal", "title": "Region"},
-          {"field": "drownings", "type": "quantitative", "title": "Fatalities (2024)"}
-        ]
-      }
-    },
-    {
-      "mark": {"type": "text", "fontSize": 36, "fontWeight": "bold", "color": "#0f172a", "dy": -5},
-      "data": {"values": [{}]},
-      "encoding": {
-        "text": {"value": "154"}
-      }
-    },
-    {
-      "mark": {"type": "text", "fontSize": 12, "fontWeight": 300, "color": "#64748b", "dy": 20},
-      "data": {"values": [{}]},
-      "encoding": {
-        "text": {"value": "Total Fatalities"}
-      }
+      "calculate": "datum.state === 'NSW' ? 'New South Wales' : datum.state === 'VIC' ? 'Victoria' : datum.state === 'QLD' ? 'Queensland' : datum.state === 'WA' ? 'Western Australia' : datum.state === 'SA' ? 'South Australia' : datum.state === 'TAS' ? 'Tasmania' : datum.state === 'NT' ? 'Northern Territory' : datum.state",
+      "as": "Full_State"
     }
-  ]
+  ],
+  "mark": {"type": "arc", "innerRadius": 20, "stroke": "#ffffff", "strokeWidth": 1.5},
+  "encoding": {
+    "theta": {
+      "field": "Full_State",
+      "type": "nominal",
+      "sort": {"field": "drownings", "order": "descending"}
+    },
+    "radius": {
+      "field": "drownings",
+      "type": "quantitative",
+      "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}
+    },
+    "color": {
+      "field": "Full_State",
+      "type": "nominal",
+      "title": "State/Territory",
+      "scale": {
+        "range": ["#0f172a", "#0284c7", "#38bdf8", "#0d9488", "#f59e0b", "#f43f5e", "#8b5cf6"]
+      }
+    },
+    "tooltip": [
+      {"field": "Full_State", "type": "nominal", "title": "State/Territory"},
+      {"field": "drownings", "type": "quantitative", "title": "Total Fatalities"}
+    ]
+  }
 }

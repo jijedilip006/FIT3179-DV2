@@ -1,19 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Proportional symbol map of NSW beaches showing water quality ratings.",
   "title": {
     "text": "NSW Coastal Water Quality Observations",
     "subtitle": [
       "Real-time pollution ratings at major beach and inlet locations.",
       "Source: NSW EPA / Beachwatch"
     ],
-    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+    "anchor": "start",
+    "subtitleFontStyle": "italic",
+    "subtitleColor": "#64748b",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "offset": 15
   },
-  "width": 600,
-  "height": 700,
+  "width": 500,
+  "height": 500,
   "projection": {
     "type": "mercator",
-    "center": [149, -33],
+    "center": [148, -33],
     "scale": 2500
   },
   "layer": [
@@ -24,50 +28,51 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#d3d3d3",
-        "stroke": "white",
+        "fill": "#e2e8f0",
+        "stroke": "#ffffff",
         "strokeWidth": 1.5
       }
     },
     {
       "data": {
-        "url": "data/data.csv"
+        "url": "../data/data.csv"
       },
       "mark": {
         "type": "circle",
-        "opacity": 0.7,
-        "stroke": "black",
+        "stroke": "#334155",
         "strokeWidth": 0.5
       },
       "encoding": {
-        "longitude": {
-          "field": "longitude",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "latitude",
-          "type": "quantitative"
-        },
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
         "size": {
           "field": "latest_result_rating",
           "type": "quantitative",
-          "scale": {"domain": [1, 4], "range": [20, 250]},
-          "legend": {"title": "Rating (1=Bad, 4=Good)"}
+          "title": "Danger Magnitude",
+          "scale": {"domain": [1, 4], "range": [300, 40]}
         },
         "color": {
           "field": "latest_result",
           "type": "nominal",
+          "title": "Observation Result",
           "scale": {
             "domain": ["Good", "Fair", "Poor", "Bad"],
-            "range": ["#2ca02c", "#ff7f0e", "#d62728", "#8c564b"]
-          },
-          "legend": {"title": "Observation Result"}
+            "range": ["#10b981", "#facc15", "#f97316", "#ef4444"]
+          }
+        },
+        "opacity": {
+          "condition": {"test": "datum.latest_result == 'Good'", "value": 0.2},
+          "value": 0.95
+        },
+        "order": {
+          "field": "latest_result_rating",
+          "type": "quantitative",
+          "sort": "descending"
         },
         "tooltip": [
-          {"field": "site_name", "type": "nominal", "title": "Beach Name"},
-          {"field": "latest_result", "type": "nominal", "title": "Result"},
-          {"field": "latest_result_rating", "type": "quantitative", "title": "Rating"},
-          {"field": "pollution_forecast", "type": "nominal", "title": "Forecast"}
+          {"field": "site_name", "type": "nominal", "title": "Location"},
+          {"field": "latest_result", "type": "nominal", "title": "Water Quality"},
+          {"field": "latest_result_rating", "type": "quantitative", "title": "Rating"}
         ]
       }
     }

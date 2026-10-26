@@ -1,48 +1,50 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Radial Stacked Bar Chart of Amenities by Hazard Rating.",
   "title": {
     "text": "Commercial Infrastructure Retreat",
     "subtitle": [
-      "Presence of kiosks compared to beach hazard ratings.",
+      "Proportion of beaches with kiosks across hazard severity.",
       "Source: Victorian Beach Facilities & Safety"
     ],
-    "anchor": "start", "subtitleFontStyle": "italic", "subtitleColor": "#64748b", "fontSize": 16, "subtitleFontSize": 11, "offset": 15
+    "anchor": "start",
+    "subtitleFontStyle": "italic",
+    "subtitleColor": "#64748b",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "offset": 15
   },
-  "width": 500,
-  "height": 500,
+  "width": 350,
+  "height": 250,
   "data": {
     "url": "data/BEACH_FACILITIES_SAFETY.csv"
   },
   "mark": {
-    "type": "arc",
-    "innerRadius": 50,
-    "stroke": "#ffffff"
+    "type": "area",
+    "interpolate": "monotone",
+    "line": true
   },
   "encoding": {
-    "theta": {
+    "x": {
+      "field": "HAZARD_RAT",
+      "type": "quantitative",
+      "title": "Hazard Rating (1 = Low, 10 = High)",
+      "axis": {"tickCount": 10}
+    },
+    "y": {
       "aggregate": "count",
       "type": "quantitative",
-      "stack": true
-    },
-    "radius": {
-      "field": "HAZARD_RAT",
-      "type": "ordinal",
-      "scale": {"type": "point", "paddingInner": 0.1, "align": 0.5},
-      "title": "Hazard Rating (Center Outward)"
+      "stack": "normalize",
+      "axis": {"format": "%", "title": "Percentage of Beaches"}
     },
     "color": {
       "field": "KIOSK",
       "type": "nominal",
-      "scale": {
-        "domain": ["FALSE", "TRUE"],
-        "range": ["#cbd5e1", "#3b82f6"]
-      },
-      "legend": {"title": "Has Kiosk?"}
+      "title": "Kiosk Available",
+      "scale": {"range": ["#e2e8f0", "#0284c7"]}
     },
     "tooltip": [
-      {"field": "HAZARD_RAT", "type": "ordinal", "title": "Hazard Rating"},
-      {"field": "KIOSK", "type": "nominal", "title": "Kiosk Present"},
+      {"field": "HAZARD_RAT", "type": "quantitative", "title": "Hazard Rating"},
+      {"field": "KIOSK", "type": "nominal", "title": "Has Kiosk?"},
       {"aggregate": "count", "type": "quantitative", "title": "Number of Beaches"}
     ]
   }

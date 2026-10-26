@@ -26,10 +26,11 @@
         }
       },
       "mark": {
-        "type": "geoshape",
-        "fill": "#e2e8f0",
-        "stroke": "#ffffff",
-        "strokeWidth": 1
+        "type": "circle", 
+        "size": 30, 
+        "opacity": 0.65, 
+        "stroke": "white", 
+        "strokeWidth": 0.5
       }
     },
     {
