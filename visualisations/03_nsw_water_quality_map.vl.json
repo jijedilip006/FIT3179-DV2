@@ -35,7 +35,7 @@
     },
     {
       "data": {
-        "url": "../data/data.csv"
+        "url": "data/data.csv"
       },
       "mark": {
         "type": "circle",
