@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Victorian Beach Risk Distribution",
+    "subtitle": [
+      "Proportion of beaches categorized by hazard severity.",
+      "Source: Victorian Beach Facilities & Safety"
+    ],
+    "anchor": "start",
+    "subtitleFontStyle": "italic",
+    "subtitleColor": "#64748b",
+    "fontSize": 16,
+    "subtitleFontSize": 11,
+    "offset": 15
+  },
+  "width": 350,
+  "height": 250,
+  "data": {
+    "url": "data/BEACH_FACILITIES_SAFETY.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.HAZARD_RAT <= 3 ? '1. Low Risk (1-3)' : datum.HAZARD_RAT <= 6 ? '2. Medium Risk (4-6)' : '3. High Risk (7-10)'",
+      "as": "Risk_Level"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 70, "stroke": "#ffffff", "strokeWidth": 2},
+      "encoding": {
+        "theta": {
+          "aggregate": "count",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Risk_Level",
+          "type": "nominal",
+          "title": "Hazard Category",
+          "scale": {
+            "domain": ["1. Low Risk (1-3)", "2. Medium Risk (4-6)", "3. High Risk (7-10)"],
+            "range": ["#10b981", "#facc15", "#ef4444"]
+          }
+        },
+        "tooltip": [
+          {"field": "Risk_Level", "type": "nominal", "title": "Category"},
+          {"aggregate": "count", "type": "quantitative", "title": "Number of Beaches"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 16, "fontWeight": "bold", "color": "#0f172a", "dy": -8},
+      "data": {"values": [{}]},
+      "encoding": {
+        "text": {"value": "Majority Safe"}
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "color": "#64748b", "dy": 12},
+      "data": {"values": [{}]},
+      "encoding": {
+        "text": {"value": "(Low/Med Risk)"}
+      }
+    }
+  ]
+}
