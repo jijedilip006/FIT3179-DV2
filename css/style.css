@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f8fafc; /* Slightly darker base than pure white */
+    background-color: #f8fafc; 
     /* A very faint, 3% opacity linear grid texture */
     background-image: 
         linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
@@ -68,7 +68,7 @@ body {
 }
 
 .author-info span {
-    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background for pill */
+    background-color: rgba(255, 255, 255, 0.1);
     padding: 8px 20px;
     border-radius: 25px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -78,15 +78,6 @@ body {
 /* --- Dashboard Sections (Z-Pattern Layout) --- */
 .dashboard-section {
     margin-bottom: 100px;
-}
-
-/* Ensure the middle Victoria section is pure white to contrast the textured body */
-.dashboard-section:nth-of-type(2) {
-    background-color: #ffffff; 
-    padding: 3rem 2rem;
-    border-radius: 16px;
-    margin: 3rem 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 
 .section-title {
@@ -240,4 +231,36 @@ body {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* =========================================================
+   COLOR-CODED INFO CARDS BY SECTION
+   ========================================================= */
+
+/* Section 1: The National Overview (Clean White) */
+.dashboard-section:nth-of-type(1) .z-text {
+    background-color: #ffffff;
+}
+
+/* Section 2: Victoria (Cool Ice Blue) */
+.dashboard-section:nth-of-type(2) .z-text {
+    background-color: #f0f9ff; 
+    border-top: 1px solid #e0f2fe;
+    border-right: 1px solid #e0f2fe;
+    border-bottom: 1px solid #e0f2fe;
+}
+
+/* Section 3: New South Wales (Warm Sand Yellow) */
+.dashboard-section:nth-of-type(3) .z-text {
+    background-color: #fffbf0; 
+    border-top: 1px solid #fef3c7;
+    border-right: 1px solid #fef3c7;
+    border-bottom: 1px solid #fef3c7;
+    border-left: 5px solid #d97706; 
+}
+
+/* Update the tiny "Insight" tag color for Section 3 to match the sand theme */
+.dashboard-section:nth-of-type(3) .z-text::before {
+    background: #d97706;
+    box-shadow: 0 2px 4px rgba(217, 119, 6, 0.2);
 }

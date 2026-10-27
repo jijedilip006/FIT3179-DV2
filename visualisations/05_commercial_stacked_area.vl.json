@@ -18,6 +18,9 @@
   "data": {
     "url": "data/BEACH_FACILITIES_SAFETY.csv"
   },
+  "transform": [
+    {"filter": "datum.KIOSK == 'TRUE' || datum.KIOSK == 'FALSE'"}
+  ],
   "mark": {
     "type": "area",
     "interpolate": "monotone",
@@ -40,7 +43,10 @@
       "field": "KIOSK",
       "type": "nominal",
       "title": "Kiosk Available",
-      "scale": {"range": ["#e2e8f0", "#0284c7"]}
+      "scale": {
+        "domain": ["TRUE", "FALSE"],
+        "range": ["#0284c7", "#e2e8f0"]
+      }
     },
     "tooltip": [
       {"field": "HAZARD_RAT", "type": "quantitative", "title": "Hazard Rating"},
