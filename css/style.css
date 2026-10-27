@@ -7,7 +7,12 @@
 }
 
 body {
-    background-color: var(--sand-light);
+    background-color: #f8fafc; /* Slightly darker base than pure white */
+    /* A very faint, 3% opacity linear grid texture */
+    background-image: 
+        linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
     font-family: 'Poppins', sans-serif;
     color: var(--text-main);
     margin: 0;
@@ -21,28 +26,32 @@ body {
     padding: 20px;
 }
 
-/* --- Header Styling --- */
+/* --- Header Styling (Hero Banner) --- */
 .dashboard-header {
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(15, 23, 42, 0.05) 100%);
-    border-top: 5px solid var(--ocean-blue);
-    border-bottom: 1px solid #e2e8f0;
-    padding: 50px 20px;
+    background: linear-gradient(
+        to bottom, 
+        rgba(15, 23, 42, 0.7), /* Dark slate overlay for text legibility */
+        rgba(15, 23, 42, 0.9)
+    ),
+    url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+    padding: 6rem 2rem;
     text-align: center;
-    margin-bottom: 50px;
-    border-radius: 8px;
+    border-radius: 0 0 24px 24px;
+    margin-bottom: 3rem;
+    border: none;
 }
 
 .dashboard-header h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
-    color: var(--ocean-dark);
+    color: #ffffff !important;
     margin: 0 0 10px 0;
     letter-spacing: -0.5px;
 }
 
 .subtitle {
     font-size: 1.1rem;
-    color: var(--ocean-blue);
+    color: #e2e8f0 !important; 
     font-weight: 300;
     margin: 0 0 25px 0;
     text-transform: uppercase;
@@ -54,22 +63,30 @@ body {
     justify-content: center;
     gap: 20px;
     font-size: 0.95rem;
-    color: var(--ocean-dark);
+    color: #cbd5e1 !important;
     font-weight: 600;
 }
 
-/* Pill-shaped badges for your name and ID */
 .author-info span {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background for pill */
     padding: 8px 20px;
     border-radius: 25px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* --- Dashboard Sections (Z-Pattern Layout) --- */
 .dashboard-section {
     margin-bottom: 100px;
+}
+
+/* Ensure the middle Victoria section is pure white to contrast the textured body */
+.dashboard-section:nth-of-type(2) {
+    background-color: #ffffff; 
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin: 3rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 
 .section-title {
@@ -85,13 +102,12 @@ body {
 /* --- Z-Pattern Rows --- */
 .z-row {
     display: flex;
-    align-items: center; /* Vertically centers the text alongside the chart */
+    align-items: center;
     justify-content: space-between;
     gap: 60px;
     margin-bottom: 80px;
 }
 
-/* Flips the layout for the alternating zigzag effect */
 .z-row.reverse {
     flex-direction: row-reverse;
 }
@@ -102,12 +118,17 @@ body {
     background: #ffffff;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(2, 132, 199, 0.05); /* Soft, oceanic shadow */
-    border-left: 5px solid var(--ocean-blue); /* Crisp blue accent line */
+    box-shadow: 0 10px 25px rgba(2, 132, 199, 0.05);
+    border-left: 5px solid var(--ocean-blue);
     border-top: 1px solid #f1f5f9;
     border-right: 1px solid #f1f5f9;
     border-bottom: 1px solid #f1f5f9;
     position: relative;
+    transition: transform 0.3s ease;
+}
+
+.z-text:hover {
+    transform: translateX(4px); 
 }
 
 .z-text::before {
@@ -161,25 +182,31 @@ body {
 
 /* --- Chart Container --- */
 .z-chart {
-    flex: 1.2; /* Gives slightly more room to the visualisations */
+    flex: 1.2;
     display: flex;
     justify-content: center;
 }
 
 .chart-container {
-    background: #ffffff;
-    padding: 25px;
+    background-color: #ffffff;
+    padding: 24px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05); /* Soft, elevated shadow */
-    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04);
+    border: none;
     width: 100%;
-    overflow-x: auto; /* Ensures charts don't break the layout on smaller screens */
+    overflow-x: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.chart-container:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
 }
 
 /* --- Responsive Design for Smaller Screens --- */
 @media (max-width: 950px) {
     .z-row, .z-row.reverse {
-        flex-direction: column; /* Stacks everything vertically on mobile/small laptops */
+        flex-direction: column;
         gap: 40px;
     }
     .z-text {
@@ -201,4 +228,16 @@ body {
     justify-content: center;
     gap: 30px;
     width: 100%;
+}
+
+/* --- SCROLL REVEAL ANIMATION CLASSES --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }

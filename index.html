@@ -33,7 +33,7 @@
             <h2 class="section-title">The National Scale: Tourism, Value, and Risk</h2>
             
             <!-- Row 1: Text Left, Chart Right -->
-            <div class="z-row">
+            <div class="z-row reveal">
                 <div class="z-text">
                     <span class="theme-kicker">Coastal Demand</span>
                     <h3>The Magnitude of Australian Beach Tourism</h3>
@@ -46,7 +46,7 @@
             </div>
 
             <!-- Row 2: Chart Left, Text Right (Z-Pattern) -->
-            <div class="z-row reverse">
+            <div class="z-row reverse reveal">
                 <div class="z-text">
                     <span class="theme-kicker">Economic Contribution</span>
                     <h3>The $4.3B Volunteer Lifeline</h3>
@@ -59,7 +59,7 @@
             </div>
 
             <!-- Row 3: Text Left, Chart Right -->
-            <div class="z-row">
+            <div class="z-row reveal">
                 <div class="z-text">
                     <span class="theme-kicker">Human Cost</span>
                     <h3>The Price of Paradise</h3>
@@ -77,7 +77,7 @@
             <h2 class="section-title">Victoria: Engineering Safety in Rugged Terrain</h2>
             
             <!-- Row 1: The Maps (Macro View) -->
-            <div class="z-row">
+            <div class="z-row reveal">
                 <div class="z-text">
                     <span class="theme-kicker">Geospatial Distribution</span>
                     <h3>Mapping the Danger Zones</h3>
@@ -91,7 +91,7 @@
             </div>
 
             <!-- Row 2: Environment (Statistical Correlation) -->
-            <div class="z-row reverse">
+            <div class="z-row reverse reveal">
                 <div class="z-text">
                     <span class="theme-kicker">Environmental Factors</span>
                     <h3>Does Rugged Mean Dangerous?</h3>
@@ -105,7 +105,7 @@
             </div>
 
             <!-- Row 3: Infrastructure (Micro View) -->
-            <div class="z-row">
+            <div class="z-row reveal">
                 <div class="z-text">
                     <span class="theme-kicker">Commercial Infrastructure</span>
                     <h3>Retreating from the Danger Zone</h3>
@@ -124,7 +124,7 @@
             <h2 class="section-title">New South Wales: The Invisible Threat</h2>
             
             <!-- Row 1: The NSW Water Quality Map -->
-            <div class="z-row">
+            <div class="z-row reveal">
                 <div class="z-text">
                     <span class="theme-kicker">Environmental Health</span>
                     <h3>Mapping Pollution in Real-Time</h3>
@@ -137,7 +137,7 @@
             </div>
 
             <!-- Row 2: The Forecast Accuracy Stacked Bar -->
-            <div class="z-row reverse">
+            <div class="z-row reverse reveal">
                 <div class="z-text">
                     <span class="theme-kicker">Data Reliability</span>
                     <h3>Can We Trust the Forecasts?</h3>
@@ -176,7 +176,28 @@
         vegaEmbed('#vis3', 'visualisations/03_nsw_water_quality_map.vl.json', {actions: false}).catch(console.error);
         vegaEmbed('#vis10', 'visualisations/10_nsw_forecast_stacked_bar.vl.json', {actions: false}).catch(console.error);
     </script>
-</body>
-</html>
+
+    <!-- Scroll Reveal Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3 // Increased to 0.3 to make the animation visible while scrolling
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Stops animating after the first reveal
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
 </body>
 </html>
